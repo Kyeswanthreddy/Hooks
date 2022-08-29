@@ -1,0 +1,67 @@
+.App {
+  height: 100;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-color: black;
+}
+
+.header {
+  font-size: 20px;
+}
+
+.main {
+  height: 200px;
+  width: 800px;
+  flex-direction: column;
+  border-color: blue;
+}
+
+.currency {
+  display: flex;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.fromCurrency,
+.toCurrency {
+  width: 120px;
+}
+
+.flipExchange {
+  padding: 5px;
+  margin: 55px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.output {
+  box-sizing: border-box;
+  width: 800px;
+  padding-left: 30px;
+}
+
+button {
+  width: 100px;
+  height: 30px;
+  font-weight: bold;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+p,
+h3,
+button,
+.flipExchange {
+  color: black;
+}
+
+p {
+  font-size: 30px;
+}
+
+input {
+  padding-left: 5px;
+  font-size: 20px;
+  height: 36px;
+}
