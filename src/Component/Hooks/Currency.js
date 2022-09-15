@@ -3,10 +3,12 @@ import './Currency.css';
 import { HiSwitchHorizontal } from 'react-icons/hi';
 import Select from 'react-select';
 import useFetch from './useFetch';
+import { useDispatch, useSelector } from "react-redux";
+import { decrement, increment, incrementByValue } from "../redux/counterSlice";
 
 function Currency() {
-
-  const [amountInFromCurrency, setAmountInFromCurrency] = useState(0);
+  const { count } = useSelector((store) => store.counter)
+  const [amountInFromCurrency, setAmountInFromCurrency] = useState(count);
   const [fromCurrency, setFromCurrency] = useState('usd');
   const [toCurrency, setToCurrency] = useState('inr');
   const [currencyOptions, setCurrencyOptions] = useState([]);
@@ -14,7 +16,11 @@ function Currency() {
   const info = useFetch(`https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${fromCurrency}.json`, fromCurrency);
   const fromCur = useRef();
 
+  // adding redux configuration
+  const dispatch = useDispatch();
+
   useEffect(() => {
+    setAmountInFromCurrency(count);
     let temparray = [];
     const infoKeyData = Object.keys(info);
     infoKeyData.forEach((item) => {
@@ -38,6 +44,11 @@ function Currency() {
     setAmount(amountInFromCurrency * exchangeRate);
   }
 
+  function incrementAmount() {
+    console.log('Test1')
+    setAmountInFromCurrency(count);
+  }
+
   return (
     <div className="App">
       <div className="header">
@@ -47,7 +58,7 @@ function Currency() {
         <div>
           <h3>Amount</h3>
           <input type="text"
-            placeholder="Enter the amount:"
+            placeholder="Enter the amount:" value={amountInFromCurrency}
             onChange={
               (e) => setAmountInFromCurrency(e.target.value)
             } />
@@ -82,6 +93,17 @@ function Currency() {
         <p>{amountInFromCurrency + " " + fromCurrency + " = " + amount.toFixed(2) + " " + toCurrency}</p>
 
       </div>
+      <div className="output1">
+        <button>Amount</button>
+      </div>
+      <button onClick={() => {
+        dispatch(increment())
+        incrementAmount()
+      }}>Increment</button>
+      <button onClick={() => {
+        dispatch(decrement())
+        incrementAmount()
+      }}>Decrement</button>
     </div>
   );
 }

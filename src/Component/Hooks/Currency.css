@@ -12,7 +12,7 @@
 
 .main {
   height: 200px;
-  width: 800px;
+  width: 520px;
   flex-direction: column;
   border-color: blue;
 }
@@ -39,6 +39,7 @@
   box-sizing: border-box;
   width: 800px;
   padding-left: 30px;
+  margin-right: 170px;
 }
 
 button {
@@ -64,4 +65,8 @@ input {
   padding-left: 5px;
   font-size: 20px;
   height: 36px;
+}
+
+.output1 {
+  width: 500px;
 }
