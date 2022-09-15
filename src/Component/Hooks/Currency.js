@@ -45,7 +45,6 @@ function Currency() {
   }
 
   function incrementAmount() {
-    console.log('Test1')
     setAmountInFromCurrency(count);
   }
 
